@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌟 NodeAgent Studio
+# 🌟 Agent Studio
 ### Open-Source, Node-Based Visual AI Pipeline for Batch Production
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
@@ -10,10 +10,10 @@
 
 <br/>
 
-<img src="docs/assets/showcase.jpg" alt="NodeAgent Studio Showcase" width="100%" style="border-radius:10px; border:1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+<img src="docs/assets/showcase.jpg" alt="Agent Studio Showcase" width="100%" style="border-radius:10px; border:1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
 
 <p align="center">
-  <b>NodeAgent Studio</b> is a lightweight, local, and fully portable visual AI node-graph pipeline designed for game developers, VFX artists, and AI creators. 
+  <b>Agent Studio</b> is a lightweight, local, and fully portable visual AI node-graph pipeline designed for game developers, VFX artists, and AI creators. 
   Perform batch background removal, 360° spherical 3D relighting, vision-language auto captioning, and multi-format exports in one unified canvas.
 </p>
 
