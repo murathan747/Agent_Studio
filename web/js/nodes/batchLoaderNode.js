@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Node: Batch Loader
+ * AgentStudio - Node: Batch Loader
  * Handles bulk file queue (folders & multi-files) without memory overload.
  * =========================================================================
  */

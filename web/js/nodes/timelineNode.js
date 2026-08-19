@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Node: Timeline Sequencer (Keyframe Animation)
+ * AgentStudio - Node: Timeline Sequencer (Keyframe Animation)
  * Unreal Engine Style Timeline & Keyframe Animator for 3D Relighting & VFX.
  * =========================================================================
  */

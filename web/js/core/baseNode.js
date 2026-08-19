@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - BaseNode Standard Component Helper
+ * AgentStudio - BaseNode Standard Component Helper
  * Common lifecycle, standard shell, laser progress line, and draggable handlers.
  * =========================================================================
  */

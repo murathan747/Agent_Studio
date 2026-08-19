@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Node: Split Assets
+ * AgentStudio - Node: Split Assets
  * Florence-2 Object Detection & Sub-Asset Extraction Node.
  * =========================================================================
  */

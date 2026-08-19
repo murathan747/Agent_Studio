@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Application Bootstrap & Main Entry Point
+ * AgentStudio - Application Bootstrap & Main Entry Point
  * Initializes Canvas, Wires, NodeRegistry, i18n and default workspace nodes.
  * =========================================================================
  */
@@ -9,6 +9,7 @@ import { CanvasEngine } from './core/canvas.js';
 import { WiresEngine } from './core/wires.js';
 import { NodeRegistry } from './core/nodeRegistry.js';
 import { ApiClient } from './core/api.js';
+import { APP_CONFIG } from './core/config.js';
 
 // Core Node Definitions
 import { BatchLoaderNode } from './nodes/batchLoaderNode.js';
@@ -76,7 +77,14 @@ class App {
         // 6. Spawn Default Ready-to-Use Pipeline (Split -> Remove BG -> Resize & Align)
         this.initDefaultWorkflow();
 
-        console.log('✨ NodeAgent Studio initialized successfully with modular architecture.');
+        // 7. Sync configuration with backend if available
+        APP_CONFIG.syncWithBackend().then(() => {
+            if (APP_CONFIG.appTitle) {
+                document.title = APP_CONFIG.appTitle;
+            }
+        });
+
+        console.log(`✨ ${APP_CONFIG.appName} initialized successfully with modular architecture.`);
     }
 
     initDefaultWorkflow() {

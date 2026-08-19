@@ -1,0 +1,11 @@
+﻿{
+  "appName": "AgentStudio",
+  "appTitle": "AgentStudio - Open-Source Visual AI Pipeline",
+  "version": "1.0.0",
+  "description": "Portable Node-Based AI Pipeline for Image & VFX Workflows",
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8000
+  },
+  "storagePrefix": "agentstudio"
+}

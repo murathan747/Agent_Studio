@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Central API Client
+ * AgentStudio - Central API Client
  * Clean interface for backend server calls and model management.
  * =========================================================================
  */

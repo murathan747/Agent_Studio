@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Node Registry & Factory Engine
+ * AgentStudio - Node Registry & Factory Engine
  * Scalable, plugin-friendly registration for all Node Types (Core & Custom).
  * =========================================================================
  */

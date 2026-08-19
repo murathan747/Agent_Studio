@@ -2,14 +2,26 @@ $ErrorActionPreference = "SilentlyContinue"
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $workDir = Split-Path -Parent $scriptDir
 
-# 1. Clean up any stale port 8000 listeners
-Get-NetTCPConnection -LocalPort 8000 -ErrorAction SilentlyContinue | ForEach-Object {
+# Load Dynamic Configuration
+$configFile = Join-Path $workDir "app_config.json"
+$appName = "AgentStudio"
+$port = 8000
+if (Test-Path $configFile) {
+    try {
+        $cfg = Get-Content $configFile -Raw | ConvertFrom-Json
+        if ($cfg.appName) { $appName = $cfg.appName }
+        if ($cfg.server.port) { $port = [int]$cfg.server.port }
+    } catch {}
+}
+
+# 1. Clean up any stale port listeners
+Get-NetTCPConnection -LocalPort $port -ErrorAction SilentlyContinue | ForEach-Object {
     Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue
 }
 
 # 2. Launch browser app window in background worker once server is ready
-$url = "http://127.0.0.1:8000"
-$profileDir = Join-Path $env:LOCALAPPDATA "NodeAgentStudio\AppProfile"
+$url = "http://127.0.0.1:$port"
+$profileDir = Join-Path $env:LOCALAPPDATA "$appName\AppProfile"
 
 $browserJob = {
     param($url, $profileDir)
@@ -50,9 +62,9 @@ $browserJob = {
 Start-Job -ScriptBlock $browserJob -ArgumentList $url, $profileDir | Out-Null
 
 Write-Host "================================================================" -ForegroundColor Cyan
-Write-Host "  🚀 NodeAgent Studio - Canli Terminal Konsolu & Log Ekrani" -ForegroundColor Green
+Write-Host "  🚀 $appName - Canli Terminal Konsolu & Log Ekrani" -ForegroundColor Green
 Write-Host "================================================================" -ForegroundColor Cyan
-Write-Host "Server http://127.0.0.1:8000 adresinde baslatildi." -ForegroundColor Yellow
+Write-Host "Server http://127.0.0.1:$port adresinde baslatildi." -ForegroundColor Yellow
 Write-Host "Model indirmeleri, AI motoru ve dugum loglari canli olarak akacaktir.`n" -ForegroundColor DarkGray
 
 # 3. Run Python directly in the terminal with -u (unbuffered) so ALL logs stream live!

@@ -6,7 +6,8 @@ import shutil
 import base64
 import threading
 import warnings
-from typing import List, Optional
+import json
+from typing import List, Optional, Dict, Any, Union
 import numpy as np
 from PIL import Image, ImageFilter, ImageOps, ImageDraw
 
@@ -20,6 +21,24 @@ if hasattr(sys.stdout, 'reconfigure'):
     except Exception:
         pass
 
+# Root directory resolution & Config Loading
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+CONFIG_PATH = os.path.join(BASE_DIR, "app_config.json")
+APP_CONFIG = {
+    "appName": "AgentStudio",
+    "appTitle": "AgentStudio - Open-Source Visual AI Pipeline",
+    "version": "1.0.0",
+    "server": {"host": "127.0.0.1", "port": 8000}
+}
+if os.path.exists(CONFIG_PATH):
+    try:
+        with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+            APP_CONFIG.update(json.load(f))
+    except Exception:
+        pass
+
 from fastapi import FastAPI, File, UploadFile, Form, Request, HTTPException, BackgroundTasks
 from fastapi.responses import HTMLResponse, JSONResponse, Response, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -27,7 +46,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import uvicorn
 
-app = FastAPI(title="NodeAgent Studio API", version="1.0.0")
+app = FastAPI(title=f"{APP_CONFIG.get('appName', 'AgentStudio')} API", version=APP_CONFIG.get('version', '1.0.0'))
 
 app.add_middleware(
     CORSMiddleware,
@@ -62,13 +81,17 @@ if os.path.exists(WEB_DIR):
     if os.path.exists(js_dir):
         app.mount("/js", StaticFiles(directory=js_dir), name="js")
 
+@app.get("/api/config")
+async def get_app_config():
+    return APP_CONFIG
+
 @app.get("/", response_class=HTMLResponse)
 async def index():
     index_file = os.path.join(WEB_DIR, "index.html")
     if os.path.exists(index_file):
         with open(index_file, "r", encoding="utf-8") as f:
             return HTMLResponse(content=f.read())
-    return HTMLResponse(content="<h1>NodeAgent Studio - index.html bulunamadı</h1>")
+    return HTMLResponse(content=f"<h1>{APP_CONFIG.get('appName', 'AgentStudio')} - index.html bulunamadı</h1>")
 
 # =========================================================================
 # MODEL MANAGER & DOWNLOADER SYSTEM (On-Demand Model Hub)
@@ -1620,8 +1643,11 @@ def get_agents_status():
     return {"status": "ready", "agents": []}
 
 if __name__ == "__main__":
+    host = APP_CONFIG.get("server", {}).get("host", "127.0.0.1")
+    port = APP_CONFIG.get("server", {}).get("port", 8000)
+    app_name = APP_CONFIG.get("appName", "AgentStudio")
     print("=" * 60)
-    print("🚀 NodeAgent Studio Server Başlatılıyor...")
-    print("🌐 Arayüz: http://127.0.0.1:8000")
+    print(f"🚀 {app_name} Server Başlatılıyor...")
+    print(f"🌐 Arayüz: http://{host}:{port}")
     print("=" * 60)
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host=host, port=port)

@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Node: Relight & Atmosphere (IC-Light & Directional Engine)
+ * AgentStudio - Node: Relight & Atmosphere (IC-Light & Directional Engine)
  * Relights transparent assets & scenes with directional lighting, rim light,
  * atmospheric color grading, and ambient fill.
  * =========================================================================

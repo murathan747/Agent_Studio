@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Canvas Viewport & Navigation Engine
+ * AgentStudio - Canvas Viewport & Navigation Engine
  * Handles Infinite Grid, Zooming (cursor-centered), Panning, and Snap-to-Grid.
  * =========================================================================
  */

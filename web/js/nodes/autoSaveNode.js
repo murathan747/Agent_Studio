@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Node: Auto Save
+ * AgentStudio - Node: Auto Save
  * Handles Master Batch Pipeline Orchestration and direct saving to disk.
  * =========================================================================
  */

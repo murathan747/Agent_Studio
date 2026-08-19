@@ -1,5 +1,5 @@
 """
-Base Agent Module for NodeAgent Studio
+Base Agent Module for AgentStudio
 Enables modular node-based agent orchestration (LLM, Vision, Game Design, VFX)
 """
 

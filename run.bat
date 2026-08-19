@@ -1,9 +1,10 @@
 @echo off
-title NodeAgent Studio - Portable Launcher
+set APP_NAME=AgentStudio
+title %APP_NAME% - Portable Launcher
 cd /d "%~dp0"
 
 echo ================================================================
-echo           NodeAgent Studio - Portable AI Pipeline
+echo           %APP_NAME% - Portable AI Pipeline
 echo ================================================================
 echo.
 
@@ -50,9 +51,9 @@ for /f "tokens=5" %%a in ('netstat -aon ^| findstr ":8000"') do (
 )
 
 echo [*] Masaustu kisayolu kontrol ediliyor...
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$wshell = New-Object -ComObject WScript.Shell; $shortcutPath = [Environment]::GetFolderPath('Desktop') + '\NodeAgent Studio.lnk'; $dir = '%~dp0'.TrimEnd('\'); $shortcut = $wshell.CreateShortcut($shortcutPath); $shortcut.TargetPath = $dir + '\run.bat'; $shortcut.WorkingDirectory = $dir; $shortcut.Description = 'NodeAgent Studio - Portable AI Pipeline'; if (Test-Path ($dir + '\icon.ico')) { $shortcut.IconLocation = $dir + '\icon.ico' }; $shortcut.WindowStyle = 7; $shortcut.Save();"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$wshell = New-Object -ComObject WScript.Shell; $shortcutPath = [Environment]::GetFolderPath('Desktop') + '\%APP_NAME%.lnk'; $dir = '%~dp0'.TrimEnd('\'); $shortcut = $wshell.CreateShortcut($shortcutPath); $shortcut.TargetPath = $dir + '\run.bat'; $shortcut.WorkingDirectory = $dir; $shortcut.Description = '%APP_NAME% - Portable AI Pipeline'; if (Test-Path ($dir + '\icon.ico')) { $shortcut.IconLocation = $dir + '\icon.ico' }; $shortcut.WindowStyle = 7; $shortcut.Save();"
 
-echo [*] NodeAgent Studio masaustu uygulamasi baslatiliyor...
+echo [*] %APP_NAME% masaustu uygulamasi baslatiliyor...
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\launcher.ps1"
 
 if %ERRORLEVEL% NEQ 0 (

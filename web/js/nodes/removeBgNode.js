@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Node: Remove Background
+ * AgentStudio - Node: Remove Background
  * BiRefNet AI Smart Matting, Color Keying, Halo Defringing and Alpha Masking.
  * =========================================================================
  */

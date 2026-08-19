@@ -41,8 +41,8 @@ No Python or CUDA pre-installation required!
 
 1. **Clone or Download** this repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/NodeAgent_Studio.git
-   cd NodeAgent_Studio
+   git clone https://github.com/YOUR_USERNAME/AgentStudio.git
+   cd AgentStudio
    ```
 2. Double-click **`run.bat`**.
 3. The launcher will automatically:

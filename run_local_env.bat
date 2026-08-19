@@ -1,9 +1,10 @@
 @echo off
-title NodeAgent Studio - Local Python Launcher
+set APP_NAME=AgentStudio
+title %APP_NAME% - Local Python Launcher
 cd /d "%~dp0"
 
 echo ================================================================
-echo           NodeAgent Studio - Local Environment
+echo           %APP_NAME% - Local Environment
 echo ================================================================
 echo.
 
@@ -13,7 +14,7 @@ for /f "tokens=5" %%a in ('netstat -aon ^| findstr ":8000"') do (
     taskkill /F /PID %%a >nul 2>&1
 )
 
-echo [*] NodeAgent Studio masaustu uygulamasi baslatiliyor...
+echo [*] %APP_NAME% masaustu uygulamasi baslatiliyor...
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\launcher.ps1"
 
 if %ERRORLEVEL% NEQ 0 (

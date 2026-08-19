@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Wires & Connection Graph Engine
+ * AgentStudio - Wires & Connection Graph Engine
  * High-performance SVG Bezier Wire Routing, Multi-port wiring & Topology queries.
  * =========================================================================
  */

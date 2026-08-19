@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Node: Resize & Align
+ * AgentStudio - Node: Resize & Align
  * Standardizes resolution (e.g. 512x512), 9-slice grid alignment and padding.
  * Features: Direct drag-and-drop upload, object switcher (shows latest asset),
  * Run / Re-run execution button and single asset download.

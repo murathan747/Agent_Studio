@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * NodeAgent Studio - Internationalization (i18n) Engine
+ * AgentStudio - Internationalization (i18n) Engine
  * Professional, key-based, scalable localization system (EN / TR)
  * =========================================================================
  */
@@ -348,7 +348,7 @@ class I18nManager {
     }
 
     detectLanguage() {
-        const saved = localStorage.getItem('nodeagent_lang');
+        const saved = localStorage.getItem('agentstudio_lang') || localStorage.getItem('nodeagent_lang');
         if (saved && (saved === 'tr' || saved === 'en')) {
             return saved;
         }
@@ -370,7 +370,7 @@ class I18nManager {
     setLanguage(lang) {
         if (!I18N_DICTIONARY[lang]) return;
         this.currentLang = lang;
-        localStorage.setItem('nodeagent_lang', lang);
+        localStorage.setItem('agentstudio_lang', lang);
         this.updateDOM();
     }
 
