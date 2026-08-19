@@ -41,8 +41,8 @@ No Python or CUDA pre-installation required!
 
 1. **Clone or Download** this repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/AgentStudio.git
-   cd AgentStudio
+    git clone https://github.com/murathan747/Agent_Studio.git
+    cd Agent_Studio
    ```
 2. Double-click **`run.bat`**.
 3. The launcher will automatically:
