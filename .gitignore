@@ -1,0 +1,30 @@
+﻿# Python & Environments
+__pycache__/
+*.py[cod]
+*.class
+*.env
+.venv/
+venv/
+python_embeded/
+python_embed.zip
+get-pip.py
+
+# Large AI Models Cache (Users download on demand via 1-click UI)
+models_cache/
+*.safetensors
+*.bin
+*.onnx
+*.pt
+*.pth
+
+# Generated Outputs & Cache
+output/assets/*
+!output/assets/.gitkeep
+output/*.png
+output/*.jpg
+output/*.webp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*.tmp

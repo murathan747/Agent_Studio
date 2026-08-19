@@ -1,0 +1,194 @@
+/* =========================================================================
+   NodeAgent Studio - Main Layout & Canvas Styles
+   ========================================================================= */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0b0f17;
+    color: #ececec;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Canvas Viewport & World Grid */
+.canvas-viewport {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0b0f17;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    z-index: 1;
+    overflow: hidden;
+    user-select: none;
+}
+
+.canvas-world {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0 0;
+    will-change: transform;
+}
+
+/* SVG Wire Connections Layer */
+#wires-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20000px;
+    height: 20000px;
+    pointer-events: none;
+    z-index: 3;
+    overflow: visible;
+}
+
+/* SVG Wire Lines */
+.wire-path {
+    fill: none;
+    stroke: #38bdf8;
+    stroke-width: 4px;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+    pointer-events: stroke;
+    cursor: pointer;
+    transition: stroke 0.15s, stroke-width 0.15s;
+}
+
+.wire-path:hover {
+    stroke: #ef4444 !important;
+    stroke-width: 6px !important;
+    filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.9)) !important;
+}
+
+.wire-temp {
+    fill: none;
+    stroke: #60a5fa;
+    stroke-width: 3.5px;
+    stroke-dasharray: 6, 6;
+    animation: dash 1s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes dash {
+    to { stroke-dashoffset: -12; }
+}
+
+/* Sidebar */
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: #111827;
+    border-right: 1px solid #1f2937;
+    z-index: 10;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.7);
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: 12px;
+    margin-top: 0;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+/* Draggable Node Item in Sidebar */
+.node-item {
+    background-color: #1f2937;
+    padding: 11px 14px;
+    border-radius: 8px;
+    cursor: grab;
+    margin-bottom: 10px;
+    border: 1px solid #374151;
+    transition: all 0.2s;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.node-item:hover { 
+    background-color: #283548; 
+    border-color: #60a5fa; 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+}
+
+.node-item:active {
+    cursor: grabbing;
+}
+
+/* Floating Zoom Controls */
+.zoom-controls {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: rgba(17, 24, 39, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid #374151;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    z-index: 50;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    user-select: none;
+}
+
+.zoom-controls button {
+    background: #1f2937;
+    border: 1px solid #4b5563;
+    color: #f3f4f6;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+}
+
+.zoom-controls button:hover {
+    background: #374151;
+    border-color: #60a5fa;
+    color: #60a5fa;
+}
+
+.zoom-controls button:active {
+    transform: scale(0.95);
+}
+
+.zoom-controls span {
+    font-size: 12px;
+    font-weight: 700;
+    color: #cbd5e1;
+    min-width: 44px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.zoom-controls span:hover {
+    color: #60a5fa;
+}
